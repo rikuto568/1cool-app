@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TextInput (){
+function TextInputList (){
   const [text,setText] = useState(""); // useStateを使ってテキストの状態を管理する
   const [tasks, setTasks] = useState([]); // タスクのリストを管理するためのuseState
 
@@ -28,11 +28,12 @@ const handleSubmit = (event) => {
       <form onSubmit={handleSubmit}>{/*追加ボタンが押されると、上に設定した関数が呼び出される。そのなかのif文で、何も書かれていなかったときのの処理と、入力したタスクが消される処理が書いてあるよ */}
       <input 
         type="text"
-        value={text}{/*バリューで入力欄に入れられる値の種類を指定する。ここでは、useStateで設定したtextを入れているよ */}
+        value={text}
         onChange={handleChange}{/*この一文で入力した文字の状態を更新する*/}
         {/*２６と２７行目がそろって初めて「入力欄の文字をユーザーの操作に合わせて変更できる」状態になる */}
         placeholder="新しいタスクを入力してください"
       />
+      {/*バリューで入力欄に入れられる値の種類を指定する。ここでは、useStateで設定したtextを入れているよ */}
       <button type="submit">追加</button> 
       </form>
 
@@ -46,6 +47,6 @@ const handleSubmit = (event) => {
 
   );
 }
-export default TextInput; 
+export default TextInputList; 
 
 //テキスト入力欄、追加ボタン、タスクリストの表示、をつくったよ

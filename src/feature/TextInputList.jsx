@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TextFinish from "./textFinish";
 
 function TextInputList (){
   const [text,setText] = useState(""); // useStateを使ってテキストの状態を管理する
@@ -22,6 +23,13 @@ const handleSubmit = (event) => {
   //...tasks というスプレッド構文は、tasks 配列の中身を1つずつバラして、そこに text をくっつけて、新しい配列を作る
 //という意味です！
 };
+// 完了状態を切り替える
+  const handleToggle = (id) => {
+    setTasks(tasks.map(task =>
+      task.id === id ? { ...task, completed: !task.completed } : task
+    ));
+  };
+
   return (
     <div className="text-input">
       <h1>ToDoアプリ</h1>
@@ -38,8 +46,8 @@ const handleSubmit = (event) => {
       </form>
 
       <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>{task}</li>
+        {tasks.map((task) => (
+          <TextFinish key={task.id} task={task} onToggle={handleToggle} />
         ))}
         {/*mapメソッドは二つの引数を指定してそれらを展開する波かっこはｊｓ部分だからね */}
       </ul>

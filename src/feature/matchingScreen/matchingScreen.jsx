@@ -1,4 +1,4 @@
-function MatchingScreen() {
+function MatchingScreen({ isMatching }) {
   return (
     <div className="matching-screen">
       <h1>マッチング中...</h1>

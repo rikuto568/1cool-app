@@ -20,13 +20,13 @@ function App() {
   if (isBattleStarted) {
     content = <TimerDisplay task={task} />;
   } else if (isMatching) {
-    content = <MatchingScreen />;
+    content = <MatchingScreen isMatching={isMatching} />;
   } else {
     content = (
       <TextInput
         task={task}
         setTask={settask}
-        StartMatching={handleStartMatching}
+        startMatching={handleStartMatching}
       />
     );
   }

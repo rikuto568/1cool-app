@@ -1,3 +1,5 @@
+import LoadingSpinner from "./loadingSpinner";
+
 function MatchingScreen({ isMatching }) {
   return (
     <div className="matching-screen">
@@ -10,3 +12,4 @@ function MatchingScreen({ isMatching }) {
     </div>
   );
 }
+export default MatchingScreen;

@@ -5,11 +5,14 @@
 
 //レンダリングの後にuseeffectが実行される
 import { useEffect, useState } from "react";
+import EnemyCharacter from "./enemyCharacter.jsx";
 
 function TimerDisplay({ task, estimatedTime }) {
   const [timeLeft, setTimeLeft] = useState(
     estimatedTime ? estimatedTime * 60 : 0
   );
+  // 全体の時間を定義（分母）
+  const [totalTime] = useState(estimatedTime ? estimatedTime * 60 : 0);
 
   // タイマー機能作るよ
   useEffect(() => {
@@ -39,6 +42,7 @@ function TimerDisplay({ task, estimatedTime }) {
       <h2>タスク: {task}</h2>
       <h2>残り時間: {formatTime(timeLeft)}</h2>
       {/* ここに敵キャラを置く */}
+      <EnemyCharacter timeLeft={timeLeft} totalTime={totalTime} />
     </div>
   );
 }

@@ -4,11 +4,11 @@
 // それを使って計算するみたいな感じで
 
 //レンダリングの後にuseeffectが実行される
-import React from "react"; // Reactをインポート
+import React, { use } from "react"; // Reactをインポート
 import { useEffect, useState } from "react";
 import EnemyCharacter from "./enemyCharacter.jsx";
 
-function TimerDisplay({ task, estimatedTime }) {
+function TimerDisplay({ task, estimatedTime, setGameResult }) {
   const [timeLeft, setTimeLeft] = useState(
     estimatedTime ? estimatedTime * 60 : 0
   );
@@ -26,6 +26,12 @@ function TimerDisplay({ task, estimatedTime }) {
 
     return () => clearInterval(timer);
   }, [timeLeft]);
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      setGameResult("lose"); // タイムアップで負け
+    }
+  }, [timeLeft, setGameResult]);
+  // 時間がゼロになったときに負け画面に行くための処理を書いてます。
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
@@ -44,6 +50,7 @@ function TimerDisplay({ task, estimatedTime }) {
       <h2>残り時間: {formatTime(timeLeft)}</h2>
       {/* ここに敵キャラを置く */}
       <EnemyCharacter timeLeft={timeLeft} totalTime={totalTime} />
+      <button onClick={() => setGameResult("win")}>タスク完了！</button>
     </div>
   );
 }

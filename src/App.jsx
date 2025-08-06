@@ -3,13 +3,17 @@ import MatchingScreen from "./feature/matchingScreen/matchingScreen";
 import TaskInput from "./feature/taskInput/taskinput";
 import TimerDisplay from "./feature/timerDisplay/timerdisplay";
 import { askOpenAI } from "./feature/api/openai";
+import WinScreen from "./feature/battleResult/WinScreen";
+import LoseScreen from "./feature/battleResult/LoseScreen";
 import React from "react";
+
 function App() {
   const [task, settask] = useState("");
   const [isMatching, setIsMatching] = useState(false);
   const [isBattleStarted, setIsBattleStarted] = useState(false);
   const [estimatedTime, setEstimatedTime] = useState(null);
   const [error, setError] = useState(null);
+  const [gameResult, setGameResult] = useState(null); // 'win' | 'lose' | null
   // estimatedTimeはAIが計算したタスクの時間を保存するための状態
   //画面遷移のためのやつ
 
@@ -28,8 +32,20 @@ function App() {
   }
 
   let content;
-  if (isBattleStarted) {
-    content = <TimerDisplay task={task} estimatedTime={estimatedTime} />;
+  if (gameResult === "win") {
+    content = <WinScreen task={task} estimatedTime={estimatedTime} />;
+  } else if (gameResult === "lose") {
+    content = <LoseScreen task={task} />;
+  }
+  // 勝ち負けのコンポーネントのプロップスは別に入れてもどっちでもいい
+  else if (isBattleStarted) {
+    content = (
+      <TimerDisplay
+        task={task}
+        estimatedTime={estimatedTime}
+        setGameResult={setGameResult}
+      />
+    );
   } else if (isMatching) {
     content = <MatchingScreen isMatching={isMatching} />;
   } else {
@@ -43,6 +59,7 @@ function App() {
         {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
       </>
     );
+    // 画面遷移の大まかな仕組みはsetState関数で状態を変える → 条件分岐が再評価される → 違う画面が表示されるって感じ
   }
 
   return <div className="App">{content}</div>;

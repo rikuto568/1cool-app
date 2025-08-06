@@ -4,7 +4,7 @@ export async function askOpenAI(taskDescription) {
   const url = "https://api.openai.com/v1/chat/completions";
 
   const requestBody = {
-    model: "gpt-4",
+    model: "gpt-4o-mini",
     messages: [
       {
         role: "user",

@@ -13,7 +13,7 @@ function App() {
   const [isBattleStarted, setIsBattleStarted] = useState(false);
   const [estimatedTime, setEstimatedTime] = useState(null);
   const [error, setError] = useState(null);
-  const [gameResult, setGameResult] = useState(null); // 'win' | 'lose' | null
+  const [gameResult, setGameResult] = useState(null); // 'win' | 'lose' | を入れてそこで処理を変える
   // estimatedTimeはAIが計算したタスクの時間を保存するための状態
   //画面遷移のためのやつ
 

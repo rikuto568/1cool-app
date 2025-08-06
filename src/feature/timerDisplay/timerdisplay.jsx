@@ -28,7 +28,7 @@ function TimerDisplay({ task, estimatedTime, setGameResult }) {
   }, [timeLeft]);
   useEffect(() => {
     if (timeLeft <= 0) {
-      setGameResult("lose"); // タイムアップで負け
+      setGameResult("lose"); // タイムアップの時の処理
     }
   }, [timeLeft, setGameResult]);
   // 時間がゼロになったときに負け画面に行くための処理を書いてます。

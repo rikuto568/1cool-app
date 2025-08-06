@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MatchingScreen from "./feature/matchingScreen/matchingScreen";
 import TextInput from "./feature/taskInput/taskinput";
-import TimerDisplay from "./feature/timer/timerDisplay";
+import TimerDisplay from "./feature/timerDisplay/timerdisplay";
 import { askOpenAI } from "./feature/api/openai";
 
 function App() {

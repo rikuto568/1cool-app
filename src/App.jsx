@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MatchingScreen from "./feature/matchingScreen/matchingScreen";
-import TextInput from "./feature/taskInput/taskinput";
+import TaskInput from "./feature/taskInput/taskinput";
 import TimerDisplay from "./feature/timerDisplay/timerdisplay";
 import { askOpenAI } from "./feature/api/openai";
 
@@ -35,7 +35,7 @@ function App() {
   } else {
     content = (
       <>
-        <TextInput
+        <TaskInput
           task={task}
           setTask={settask}
           startMatching={handleStartMatching}

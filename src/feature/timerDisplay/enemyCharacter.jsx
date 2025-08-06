@@ -1,10 +1,12 @@
+import React from "react";
+
 function EnemyCharacter({ timeLeft, totalTime }) {
   const messages = [
     "しっかりやれよー。。。",
     "おい、もっとペースを上げたらどうだ",
     "何をだらだらやってんだ。時間ないぞ！",
     "バカめ、もう手遅れだ！あきらめろ",
-    "ざまあみろ！時間切れだ！お前の負け～！！",
+    "ざまあみろ！もうすぐ時間切れだ！お前の負け～！！",
   ];
 
   // 進行度の計算部分

@@ -1,4 +1,5 @@
 import LoadingSpinner from "./loadingSpinner";
+import React from "react";
 
 function MatchingScreen({ isMatching }) {
   return (

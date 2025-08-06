@@ -1,3 +1,5 @@
+import React from "react"; // ←これを追加
+
 function TaskInput({ task, setTask, startMatching }) {
   return (
     <div className="first-page">

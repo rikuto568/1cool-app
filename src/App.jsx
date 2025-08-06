@@ -3,7 +3,7 @@ import MatchingScreen from "./feature/matchingScreen/matchingScreen";
 import TaskInput from "./feature/taskInput/taskinput";
 import TimerDisplay from "./feature/timerDisplay/timerdisplay";
 import { askOpenAI } from "./feature/api/openai";
-
+import React from "react";
 function App() {
   const [task, settask] = useState("");
   const [isMatching, setIsMatching] = useState(false);

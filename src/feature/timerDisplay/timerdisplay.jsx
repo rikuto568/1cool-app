@@ -4,6 +4,7 @@
 // それを使って計算するみたいな感じで
 
 //レンダリングの後にuseeffectが実行される
+import React from "react"; // Reactをインポート
 import { useEffect, useState } from "react";
 import EnemyCharacter from "./enemyCharacter.jsx";
 

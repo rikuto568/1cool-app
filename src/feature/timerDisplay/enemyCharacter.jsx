@@ -1,14 +1,14 @@
 function EnemyCharacter({ timeLeft, totalTime }) {
   const messages = [
-    "ふふふ...まだまだ余裕だな",
-    "お、少しやるじゃないか",
-    "なかなかやるじゃないか...",
-    "くっ...予想以上だ！",
-    "まさか...こんなに集中できるとは！",
+    "しっかりやれよー。。。",
+    "おい、もっとペースを上げたらどうだ",
+    "何をだらだらやってんだ。時間ないぞ！",
+    "バカめ、もう手遅れだ！あきらめろ",
+    "ざまあみろ！時間切れだ！お前の負け～！！",
   ];
 
   // 進行度の計算部分
-  const progress = totaltime > 0 ? timeLeft / totalTime : 0;
+  const progress = totalTime > 0 ? 1 - timeLeft / totalTime : 0;
 
   function getMessageIndex() {
     if (progress < 0.2) return 0; // 20%未満

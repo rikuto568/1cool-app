@@ -8,7 +8,13 @@ export async function askOpenAI(taskDescription) {
     messages: [
       {
         role: "user",
-        content: `このタスクを、集中して効率的に終わらせるとしたら、何分かかるか見積もってください。できるだけ厳しめに、おおよその分数で答えてください。タスク内容：${taskDescription}
+        content: `「${taskDescription}」をテキパキやる時間を見積もって。
+        条件：
+        - 普通の大人がやる
+        - 集中するけど完璧主義じゃない
+        - 少し急がないと間に合わない時間
+        - 5分〜60分の間で答える
+        分数で返してください
 `,
       },
     ],

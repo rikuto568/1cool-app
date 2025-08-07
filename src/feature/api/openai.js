@@ -13,7 +13,7 @@ export async function askOpenAI(taskDescription) {
         - 普通の大人がやる
         - 集中するけど完璧主義じゃない
         - 少し急がないと間に合わない時間
-        - 5分〜60分の間で答える
+        - 5~35分の間で答える
         分数で返してください
 `,
       },

@@ -1,0 +1,60 @@
+/* 敵キャラのアニメ－ション付け */
+
+.enemy-container {
+  display: flex;
+  align-items: flex-end;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.enemy-calm img {
+  filter: hue-rotate(0deg) brightness(1);
+  animation: gentle-sway 3s ease-in-out infinite;
+}
+
+.enemy-worried img {
+  filter: hue-rotate(60deg) brightness(0.9);
+  animation: nervous-shake 1.5s ease-in-out infinite;
+}
+
+.enemy-angry img {
+  filter: hue-rotate(120deg) brightness(1.3) saturate(1.8);
+  animation: angry-bounce 0.8s ease-in-out infinite;
+}
+
+@keyframes gentle-sway {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes nervous-shake {
+  0%,
+  100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-5px) rotate(-1deg);
+  }
+  75% {
+    transform: translateX(5px) rotate(1deg);
+  }
+}
+
+@keyframes angry-bounce {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) scale(1.1) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-20px) scale(1.1) rotate(5deg);
+  }
+}
+/* ここまでアニメーション */

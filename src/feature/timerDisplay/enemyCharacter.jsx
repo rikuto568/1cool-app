@@ -1,4 +1,5 @@
 import React from "react";
+import "./enemyCharacter.css";
 
 function EnemyCharacter({ timeLeft, totalTime }) {
   const messages = [
@@ -19,14 +20,21 @@ function EnemyCharacter({ timeLeft, totalTime }) {
     if (progress < 0.8) return 3; // 60%〜80%
     else return 4; // 80%以上
   }
+  // 時間に合わせてアニメーションを変化させる
+  let animationClass = "enemy-calm";
+  if (progress >= 0.8) {
+    animationClass = "enemy-angry";
+  } else if (progress >= 0.6) {
+    animationClass = "enemy-worried";
+  }
 
   return (
-    <div style={{ display: "flex", alignItems: "flex-end", margin: "20px 0" }}>
+    <div className={`enemy-container ${animationClass}`}>
       {/* 敵キャラの画像（固定） */}
       <img
         src="/images/enemy.png"
         alt="敵キャラ"
-        style={{ width: 120, height: 120, objectFit: "cover" }}
+        style={{ width: "50%", height: "50%", objectFit: "cover" }}
       />
 
       {/* 吹き出し */}

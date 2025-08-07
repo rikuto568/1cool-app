@@ -1,3 +1,5 @@
+import React from "react";
+
 function LoseScreen({ task }) {
   return (
     <div className="lose-screen">

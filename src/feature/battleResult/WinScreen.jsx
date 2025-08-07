@@ -1,5 +1,6 @@
 // 今後やること
-// もう少し厳密なプロンプト作成
+// 意味わからん文字が打たれたときの処理
+// 画面が消えちゃったら最初の画面に戻ってしまうこと
 // 装飾
 import React from "react";
 function WinScreen({ task, estimatedTime }) {

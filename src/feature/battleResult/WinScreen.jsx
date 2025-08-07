@@ -3,7 +3,7 @@
 // 画面が消えちゃったら最初の画面に戻ってしまうこと
 // 装飾
 import React from "react";
-function WinScreen({ task, estimatedTime }) {
+function WinScreen({ task, estimatedTime, resetGame }) {
   return (
     <div className="win-screen">
       <h1>🎉Mission Complete🎉</h1>

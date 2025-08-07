@@ -1,6 +1,6 @@
 import React from "react";
 
-function LoseScreen({ task }) {
+function LoseScreen({ task, resetGame }) {
   return (
     <div className="lose-screen">
       <h1>😢Mission Failed...😢</h1>

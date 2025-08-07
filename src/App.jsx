@@ -41,9 +41,15 @@ function App() {
 
   let content;
   if (gameResult === "win") {
-    content = <WinScreen task={task} estimatedTime={estimatedTime} />;
+    content = (
+      <WinScreen
+        task={task}
+        estimatedTime={estimatedTime}
+        resetGame={resetGame}
+      />
+    );
   } else if (gameResult === "lose") {
-    content = <LoseScreen task={task} />;
+    content = <LoseScreen task={task} resetGame={resetGame} />;
   }
   // 勝ち負けのコンポーネントのプロップスは別に入れてもどっちでもいい
   else if (isBattleStarted) {

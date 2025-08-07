@@ -31,40 +31,13 @@ function EnemyCharacter({ timeLeft, totalTime }) {
   return (
     <div className={`enemy-container ${animationClass}`}>
       {/* 敵キャラの画像（固定） */}
-      <img
-        src="/images/enemy.png"
-        alt="敵キャラ"
-        style={{ width: "50%", height: "50%", objectFit: "cover" }}
-      />
+      <img src="/images/enemy.png" alt="敵キャラ" className="enemy-image" />
 
       {/* 吹き出し */}
-      <div
-        style={{
-          background: "#fff",
-          border: "2px solid #333",
-          borderRadius: "16px",
-          padding: "12px 16px",
-          marginLeft: "16px",
-          position: "relative",
-          maxWidth: "200px",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-        }}
-      >
-        <span style={{ fontSize: "14px" }}>{messages[getMessageIndex()]}</span>
-
+      <div className="enemy-bubble">
+        <span className="speech-text">{messages[getMessageIndex()]}</span>
         {/* 吹き出しの三角形（しっぽ） */}
-        <div
-          style={{
-            position: "absolute",
-            left: "-14px",
-            bottom: "20px",
-            width: 0,
-            height: 0,
-            borderTop: "8px solid transparent",
-            borderBottom: "8px solid transparent",
-            borderRight: "16px solid #fff",
-          }}
-        />
+        <div className="enemy-bubble-tail" />
       </div>
     </div>
   );

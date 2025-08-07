@@ -34,10 +34,10 @@ function EnemyCharacter({ timeLeft, totalTime }) {
       <img src="/images/enemy.png" alt="敵キャラ" className="enemy-image" />
 
       {/* 吹き出し */}
-      <div className="enemy-bubble">
+      <div className="speech-bubble">
         <span className="speech-text">{messages[getMessageIndex()]}</span>
         {/* 吹き出しの三角形（しっぽ） */}
-        <div className="enemy-bubble-tail" />
+        <div className="speech-tail" />
       </div>
     </div>
   );

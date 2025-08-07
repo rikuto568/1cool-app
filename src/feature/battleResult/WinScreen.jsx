@@ -10,6 +10,7 @@ function WinScreen({ task, estimatedTime }) {
       <p>あなたは{task}を完了しました</p>
       <p>推定所要時間: {estimatedTime}分</p>
       <p>お疲れ様でした！</p>
+      <button onClick={resetGame}>🏠 ホームに戻る</button>
     </div>
   );
 }

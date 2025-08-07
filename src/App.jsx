@@ -16,6 +16,14 @@ function App() {
   const [gameResult, setGameResult] = useState(null); // 'win' | 'lose' | を入れてそこで処理を変える
   // estimatedTimeはAIが計算したタスクの時間を保存するための状態
   //画面遷移のためのやつ
+  function resetGame() {
+    settask(""); // "洗濯物をたたむ" → ""
+    setIsMatching(false);
+    setIsBattleStarted(false);
+    setEstimatedTime(null);
+    setError(null);
+    setGameResult(null); // "win+lose" → null
+  }
 
   async function handleStartMatching() {
     setIsMatching(true);

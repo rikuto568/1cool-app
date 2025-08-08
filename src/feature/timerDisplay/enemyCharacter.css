@@ -1,28 +1,27 @@
-/* 敵キャラのアニメ－ション付け */
 .enemy-container {
   display: flex;
-  flex-direction: column; /* ←縦並びに変更 */
-  align-items: center; /* ←横方向中央 */
-  justify-content: center; /* ←縦方向中央 */
-  margin: 20px 0;
-  width: 100vw;
-  height: auto; /* ←35vhからautoに変更 */
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
   overflow: visible;
-  padding: 20px; /* ←パディング追加 */
+  padding: 20px 20px 20px 350px;
   box-sizing: border-box;
   margin: 0;
+  position: relative;
 }
 
-/* 敵キャラの画像 */
 .enemy-image {
-  width: 30vh; /* ←35vhから30vhに少し小さく */
-  height: 30vh; /* ←35vhから30vhに少し小さく */
+  width: 90vh;
+  height: 90vh;
   object-fit: contain;
-  max-width: 300px; /* ←400pxから300pxに調整 */
-  max-height: 300px; /* ←400pxから300pxに調整 */
-  min-width: 150px;
-  min-height: 150px;
-  margin-bottom: 20px; /* ←下にマージン追加 */
+  max-width: 1000px;
+  max-height: 1000px;
+  min-width: 400px;
+  min-height: 400px;
+  margin-right: 40px;
+  margin-left: -430px;
+  transform: translateX(-230px);
 }
 
 .enemy-calm .enemy-image {
@@ -40,111 +39,296 @@
   animation: angry-bounce 0.8s ease-in-out infinite;
 }
 
+.speech-bubble {
+  background: #fff;
+  border: 5px solid #333;
+  border-radius: 30px;
+  padding: 30px 40px;
+  position: absolute;
+  top: 35%;
+  right: 5%;
+  max-width: 500px;
+  min-width: 350px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  z-index: 10;
+  transform: scale(1) !important;
+}
+
+.speech-text {
+  font-size: 24px;
+  color: #333;
+  line-height: 1.8;
+  font-weight: 600;
+  margin: 0;
+}
+
+.speech-tail {
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%) scale(1) !important;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 30px solid #fff;
+}
+
+.speech-tail::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: -15px;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 30px solid #333;
+  transform: scale(1) !important;
+}
+
 @keyframes gentle-sway {
   0%,
   100% {
-    transform: translateY(0px) rotate(-1deg);
+    transform: translateX(-230px) translateY(0px) rotate(-1deg);
   }
   50% {
-    transform: translateY(-10px) rotate(1deg);
+    transform: translateX(-230px) translateY(-15px) rotate(1deg);
   }
 }
 
 @keyframes nervous-shake {
   0%,
   100% {
-    transform: translateX(0px) rotate(0deg);
+    transform: translateX(-230px) rotate(0deg);
   }
   25% {
-    transform: translateX(-8px) rotate(-2deg);
+    transform: translateX(-242px) rotate(-3deg);
   }
   75% {
-    transform: translateX(8px) rotate(2deg);
+    transform: translateX(-218px) rotate(3deg);
   }
 }
 
 @keyframes angry-bounce {
   0%,
   100% {
-    transform: translateY(0px) scale(1) rotate(0deg);
+    transform: translateX(-230px) translateY(0px) scale(1) rotate(0deg);
   }
   25% {
-    transform: translateY(-20px) scale(1.1) rotate(-5deg);
+    transform: translateX(-230px) translateY(-35px) scale(1.15) rotate(-8deg);
   }
   75% {
-    transform: translateY(-20px) scale(1.1) rotate(5deg);
+    transform: translateX(-230px) translateY(-35px) scale(1.15) rotate(8deg);
   }
 }
 
-/* 吹き出し本体 */
-.speech-bubble {
-  background: #fff;
-  border: 4px solid #333;
-  border-radius: 25px;
-  padding: 24px 32px;
-  margin-left: 0; /* ←30pxから0に変更（中央配置） */
-  position: relative;
-  max-width: 400px;
-  min-width: 280px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  text-align: center; /* ←テキスト中央揃え */
+@media (max-width: 1400px) {
+  .enemy-container {
+    padding: 20px 20px 20px 280px;
+  }
+
+  .enemy-image {
+    width: 80vh;
+    height: 80vh;
+    max-width: 800px;
+    max-height: 800px;
+    margin-left: -350px;
+    transform: translateX(-180px);
+  }
+
+  .speech-bubble {
+    right: 8%;
+    max-width: 450px;
+    top: 30%;
+  }
+
+  @keyframes gentle-sway {
+    0%,
+    100% {
+      transform: translateX(-180px) translateY(0px) rotate(-1deg);
+    }
+    50% {
+      transform: translateX(-180px) translateY(-15px) rotate(1deg);
+    }
+  }
+
+  @keyframes nervous-shake {
+    0%,
+    100% {
+      transform: translateX(-180px) rotate(0deg);
+    }
+    25% {
+      transform: translateX(-192px) rotate(-3deg);
+    }
+    75% {
+      transform: translateX(-168px) rotate(3deg);
+    }
+  }
+
+  @keyframes angry-bounce {
+    0%,
+    100% {
+      transform: translateX(-180px) translateY(0px) scale(1) rotate(0deg);
+    }
+    25% {
+      transform: translateX(-180px) translateY(-35px) scale(1.15) rotate(-8deg);
+    }
+    75% {
+      transform: translateX(-180px) translateY(-35px) scale(1.15) rotate(8deg);
+    }
+  }
 }
 
-/* 吹き出し内のテキスト */
-.speech-text {
-  font-size: 20px;
-  color: #333;
-  line-height: 1.6;
-  font-weight: 600;
+@media (max-width: 1200px) {
+  .enemy-container {
+    padding: 20px 20px 20px 220px;
+  }
+
+  .enemy-image {
+    width: 70vh;
+    height: 70vh;
+    max-width: 700px;
+    max-height: 700px;
+    min-width: 300px;
+    min-height: 300px;
+    margin-left: -280px;
+    transform: translateX(-130px);
+  }
+
+  .speech-bubble {
+    max-width: 400px;
+    min-width: 280px;
+    padding: 25px 35px;
+    top: 40%;
+    right: 10%;
+  }
+
+  .speech-text {
+    font-size: 20px;
+  }
+
+  @keyframes gentle-sway {
+    0%,
+    100% {
+      transform: translateX(-130px) translateY(0px) rotate(-1deg);
+    }
+    50% {
+      transform: translateX(-130px) translateY(-15px) rotate(1deg);
+    }
+  }
+
+  @keyframes nervous-shake {
+    0%,
+    100% {
+      transform: translateX(-130px) rotate(0deg);
+    }
+    25% {
+      transform: translateX(-142px) rotate(-3deg);
+    }
+    75% {
+      transform: translateX(-118px) rotate(3deg);
+    }
+  }
+
+  @keyframes angry-bounce {
+    0%,
+    100% {
+      transform: translateX(-130px) translateY(0px) scale(1) rotate(0deg);
+    }
+    25% {
+      transform: translateX(-130px) translateY(-35px) scale(1.15) rotate(-8deg);
+    }
+    75% {
+      transform: translateX(-130px) translateY(-35px) scale(1.15) rotate(8deg);
+    }
+  }
 }
 
-/* 吹き出しの三角形（しっぽ）を上向きに変更 */
-.speech-tail {
-  position: absolute;
-  top: -22px; /* ←bottomからtopに変更（上向き） */
-  left: 50%; /* ←中央配置 */
-  transform: translateX(-50%); /* ←中央配置のための調整 */
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent; /* ←上向きの三角形 */
-  border-right: 12px solid transparent; /* ←上向きの三角形 */
-  border-bottom: 24px solid #fff; /* ←上向きの三角形 */
+@media (max-width: 1024px) {
+  .enemy-container {
+    padding: 20px 20px 20px 180px;
+  }
+
+  .enemy-image {
+    width: 60vh;
+    height: 60vh;
+    max-width: 600px;
+    max-height: 600px;
+    margin-left: -200px;
+    transform: translateX(-80px);
+  }
+
+  .speech-bubble {
+    right: 12%;
+    max-width: 350px;
+    top: 45%;
+  }
+
+  @keyframes gentle-sway {
+    0%,
+    100% {
+      transform: translateX(-80px) translateY(0px) rotate(-1deg);
+    }
+    50% {
+      transform: translateX(-80px) translateY(-15px) rotate(1deg);
+    }
+  }
+
+  @keyframes nervous-shake {
+    0%,
+    100% {
+      transform: translateX(-80px) rotate(0deg);
+    }
+    25% {
+      transform: translateX(-92px) rotate(-3deg);
+    }
+    75% {
+      transform: translateX(-68px) rotate(3deg);
+    }
+  }
+
+  @keyframes angry-bounce {
+    0%,
+    100% {
+      transform: translateX(-80px) translateY(0px) scale(1) rotate(0deg);
+    }
+    25% {
+      transform: translateX(-80px) translateY(-35px) scale(1.15) rotate(-8deg);
+    }
+    75% {
+      transform: translateX(-80px) translateY(-35px) scale(1.15) rotate(8deg);
+    }
+  }
 }
 
-/* 吹き出しの枠線用の三角形（重ねて枠線効果） */
-.speech-tail::before {
-  content: "";
-  position: absolute;
-  top: 4px; /* ←-12pxから4pxに変更 */
-  left: -12px; /* ←-4pxから-12pxに変更 */
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 24px solid #333;
-}
-
-/* レスポンシブ対応 */
 @media (max-width: 768px) {
   .enemy-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 15px;
   }
 
   .enemy-image {
-    width: 25vh;
-    height: 25vh;
-    max-width: 250px;
-    max-height: 250px;
-    min-width: 120px;
-    min-height: 120px;
-    margin-bottom: 15px;
+    width: 50vh;
+    height: 50vh;
+    max-width: 500px;
+    max-height: 500px;
+    min-width: 250px;
+    min-height: 250px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 20px;
+    transform: none;
   }
 
   .speech-bubble {
-    max-width: 300px;
-    min-width: 200px;
-    padding: 22px 28px;
-    margin-left: 0;
+    position: static;
+    max-width: 350px;
+    min-width: 250px;
+    padding: 20px 30px;
   }
 
   .speech-text {
@@ -152,18 +336,59 @@
   }
 
   .speech-tail {
-    top: -18px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 18px solid #fff;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 24px solid #fff;
+    border-top: none;
+    border-right: 12px solid transparent;
   }
 
   .speech-tail::before {
-    top: 3px;
-    left: -10px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 18px solid #333;
+    top: 4px;
+    left: -12px;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 24px solid #333;
+    border-top: none;
+  }
+
+  @keyframes gentle-sway {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(-1deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(1deg);
+    }
+  }
+
+  @keyframes nervous-shake {
+    0%,
+    100% {
+      transform: translateX(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateX(-12px) rotate(-3deg);
+    }
+    75% {
+      transform: translateX(12px) rotate(3deg);
+    }
+  }
+
+  @keyframes angry-bounce {
+    0%,
+    100% {
+      transform: translateY(0px) scale(1) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-35px) scale(1.15) rotate(-8deg);
+    }
+    75% {
+      transform: translateY(-35px) scale(1.15) rotate(8deg);
+    }
   }
 }
 
@@ -173,20 +398,19 @@
   }
 
   .enemy-image {
-    width: 22vh;
-    height: 22vh;
-    max-width: 180px;
-    max-height: 180px;
-    min-width: 100px;
-    min-height: 100px;
-    margin-bottom: 10px;
+    width: 40vh;
+    height: 40vh;
+    max-width: 350px;
+    max-height: 350px;
+    min-width: 200px;
+    min-height: 200px;
+    margin-bottom: 15px;
   }
 
   .speech-bubble {
-    max-width: 240px;
-    min-width: 180px;
-    padding: 18px 22px;
-    margin-left: 0;
+    max-width: 280px;
+    min-width: 200px;
+    padding: 16px 24px;
   }
 
   .speech-text {
@@ -194,17 +418,17 @@
   }
 
   .speech-tail {
-    top: -15px;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 15px solid #fff;
+    top: -18px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #fff;
   }
 
   .speech-tail::before {
-    top: 2px;
-    left: -8px;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 15px solid #333;
+    top: 3px;
+    left: -10px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #333;
   }
 }

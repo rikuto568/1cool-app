@@ -46,12 +46,26 @@ function TimerDisplay({ task, estimatedTime, setGameResult }) {
 
   return (
     <div className="timer-display">
-      <h2>バトル開始！</h2>
-      <h2>タスク: {task}</h2>
-      <h2>残り時間: {formatTime(timeLeft)}</h2>
-      {/* ここに敵キャラを置く */}
-      <EnemyCharacter timeLeft={timeLeft} totalTime={totalTime} />
-      <button onClick={() => setGameResult("win")}>タスク完了！</button>
+      <header className="timer-header">
+        <h1 className="battle-title">バトル開始！</h1>
+        <h2 className="task-info">タスク: {task}</h2>
+      </header>
+
+      <main className="battle-area">
+        <div className="timer-section">
+          <div className="timer-text">{formatTime(timeLeft)}</div>
+        </div>
+        <EnemyCharacter timeLeft={timeLeft} totalTime={totalTime} />
+      </main>
+
+      <footer className="action-footer">
+        <button
+          className="complete-button"
+          onClick={() => setGameResult("win")}
+        >
+          タスク完了！
+        </button>
+      </footer>
     </div>
   );
 }

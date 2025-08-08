@@ -1,67 +1,135 @@
 .timer-display {
   min-height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "battle"
+    "footer";
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
   background: linear-gradient(135deg, #002868 0%, #4169e1 50%, #0041c2 100%);
+  overflow: hidden;
 }
 
-.timer-display h2 {
-  color: white;
-  font-size: 2.2rem;
-  margin: 15px 0;
-  text-align: center;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
+.timer-header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
 }
 
-.timer-display h2:first-child {
+.battle-title {
   color: #ff4500;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
-}
-
-.timer-display h2:nth-child(2) {
-  color: white;
-}
-
-.timer-display h2:nth-child(3) {
-  color: #ff6347;
-  font-size: 2.8rem;
+  font-size: 3.5rem;
   font-weight: 900;
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
-  animation: timeGlow 2s ease-in-out infinite alternate;
+  margin: 0;
 }
 
-.timer-display button {
+.task-info {
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  margin: 0;
+  max-width: 600px;
+  text-align: right;
+  line-height: 1.4;
+}
+
+.battle-area {
+  grid-area: battle;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "timer enemy";
+  align-items: center;
+  min-height: 60vh;
+  padding: 20px;
+  gap: 40px;
+}
+
+.timer-section {
+  grid-area: timer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.timer-box {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  border: 3px solid rgba(255, 69, 0, 0.6);
+  border-radius: 20px;
+  padding: 40px 60px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.timer-box:hover {
+  transform: scale(1.05);
+}
+
+.timer-text {
+  color: #ff6347;
+  font-size: 4.5rem;
+  font-weight: 900;
+  text-align: center;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+  animation: timeGlow 2s ease-in-out infinite alternate;
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+.enemy-section {
+  grid-area: enemy;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.action-footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.complete-button {
   background: linear-gradient(45deg, #ff4500, #ff6347, #ff7f50);
   color: white;
   border: none;
-  padding: 18px 40px;
-  font-size: 1.4rem;
+  padding: 25px 60px;
+  font-size: 1.8rem;
   font-weight: bold;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 30px;
-  box-shadow: 0 8px 25px rgba(255, 69, 0, 0.4);
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(255, 69, 0, 0.4);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.timer-display button:hover {
+.complete-button:hover {
   background: linear-gradient(45deg, #ff6347, #ff4500, #ff7f50);
-  transform: translateY(-5px) scale(1.08);
-  box-shadow: 0 12px 35px rgba(255, 69, 0, 0.6);
+  transform: translateY(-8px) scale(1.1);
+  box-shadow: 0 15px 45px rgba(255, 69, 0, 0.6);
 }
 
-.timer-display button:active {
-  transform: translateY(-2px) scale(1.05);
+.complete-button:active {
+  transform: translateY(-4px) scale(1.08);
 }
 
 @keyframes timeGlow {
@@ -69,45 +137,102 @@
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 99, 71, 0.3);
   }
   100% {
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 69, 0, 0.5);
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 69, 0, 0.8);
+  }
+}
+
+@media (max-width: 1024px) {
+  .battle-area {
+    gap: 20px;
+  }
+
+  .timer-text {
+    font-size: 3.8rem;
+  }
+
+  .timer-box {
+    padding: 30px 50px;
   }
 }
 
 @media (max-width: 768px) {
-  .timer-display h2 {
-    font-size: 1.8rem;
+  .timer-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
   }
 
-  .timer-display h2:first-child {
-    font-size: 2.1rem;
+  .task-info {
+    text-align: center;
+    max-width: 100%;
   }
 
-  .timer-display h2:nth-child(3) {
-    font-size: 2.3rem;
+  .battle-area {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "timer"
+      "enemy";
+    gap: 30px;
+    padding: 15px;
   }
 
-  .timer-display button {
-    padding: 15px 32px;
+  .battle-title {
+    font-size: 2rem;
+  }
+
+  .task-info {
     font-size: 1.2rem;
+  }
+
+  .timer-text {
+    font-size: 3.2rem;
+  }
+
+  .timer-box {
+    padding: 25px 40px;
+  }
+
+  .complete-button {
+    padding: 20px 50px;
+    font-size: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .timer-display h2 {
-    font-size: 1.5rem;
-    margin: 12px 0;
+  .timer-header {
+    padding: 15px;
   }
 
-  .timer-display h2:first-child {
+  .battle-area {
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .battle-title {
     font-size: 1.8rem;
   }
 
-  .timer-display h2:nth-child(3) {
-    font-size: 2rem;
+  .task-info {
+    font-size: 1.1rem;
   }
 
-  .timer-display button {
-    padding: 12px 25px;
-    font-size: 1.1rem;
+  .timer-text {
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+  }
+
+  .timer-box {
+    padding: 20px 30px;
+  }
+
+  .complete-button {
+    padding: 18px 40px;
+    font-size: 1.3rem;
+  }
+
+  .action-footer {
+    padding: 20px;
   }
 }

@@ -1,35 +1,41 @@
 /* 敵キャラのアニメ－ション付け */
 .enemy-container {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column; /* ←縦並びに変更 */
+  align-items: center; /* ←横方向中央 */
+  justify-content: center; /* ←縦方向中央 */
   margin: 20px 0;
-  justify-content: center;
-  width: 100%;
-  height: 25vh; /* ←画面の4分の1の高さ */
+  width: 100vw;
+  height: auto; /* ←35vhからautoに変更 */
+  overflow: visible;
+  padding: 20px; /* ←パディング追加 */
+  box-sizing: border-box;
+  margin: 0;
 }
 
 /* 敵キャラの画像 */
 .enemy-image {
-  width: 25vw;
-  height: 25vh;
-  object-fit: cover;
-  max-width: 300px;
-  max-height: 300px;
-  min-width: 120px;
-  min-height: 120px;
+  width: 30vh; /* ←35vhから30vhに少し小さく */
+  height: 30vh; /* ←35vhから30vhに少し小さく */
+  object-fit: contain;
+  max-width: 300px; /* ←400pxから300pxに調整 */
+  max-height: 300px; /* ←400pxから300pxに調整 */
+  min-width: 150px;
+  min-height: 150px;
+  margin-bottom: 20px; /* ←下にマージン追加 */
 }
 
-.enemy-calm img {
+.enemy-calm .enemy-image {
   filter: hue-rotate(0deg) brightness(1);
   animation: gentle-sway 3s ease-in-out infinite;
 }
 
-.enemy-worried img {
+.enemy-worried .enemy-image {
   filter: hue-rotate(60deg) brightness(0.9);
   animation: nervous-shake 1.5s ease-in-out infinite;
 }
 
-.enemy-angry img {
+.enemy-angry .enemy-image {
   filter: hue-rotate(120deg) brightness(1.3) saturate(1.8);
   animation: angry-bounce 0.8s ease-in-out infinite;
 }
@@ -40,7 +46,7 @@
     transform: translateY(0px) rotate(-1deg);
   }
   50% {
-    transform: translateY(-8px) rotate(1deg);
+    transform: translateY(-10px) rotate(1deg);
   }
 }
 
@@ -50,10 +56,10 @@
     transform: translateX(0px) rotate(0deg);
   }
   25% {
-    transform: translateX(-5px) rotate(-1deg);
+    transform: translateX(-8px) rotate(-2deg);
   }
   75% {
-    transform: translateX(5px) rotate(1deg);
+    transform: translateX(8px) rotate(2deg);
   }
 }
 
@@ -76,135 +82,129 @@
   border: 4px solid #333;
   border-radius: 25px;
   padding: 24px 32px;
-  margin-left: 25px;
+  margin-left: 0; /* ←30pxから0に変更（中央配置） */
   position: relative;
-  max-width: 350px;
-  min-width: 250px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* ←影をより強く */
+  max-width: 400px;
+  min-width: 280px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  text-align: center; /* ←テキスト中央揃え */
 }
 
 /* 吹き出し内のテキスト */
 .speech-text {
-  font-size: 18px;
+  font-size: 20px;
   color: #333;
   line-height: 1.6;
   font-weight: 600;
 }
 
-/* 吹き出しの三角形（しっぽ） */
+/* 吹き出しの三角形（しっぽ）を上向きに変更 */
 .speech-tail {
   position: absolute;
-  left: -22px;
-  bottom: 30px;
+  top: -22px; /* ←bottomからtopに変更（上向き） */
+  left: 50%; /* ←中央配置 */
+  transform: translateX(-50%); /* ←中央配置のための調整 */
   width: 0;
   height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-right: 24px solid #fff;
+  border-left: 12px solid transparent; /* ←上向きの三角形 */
+  border-right: 12px solid transparent; /* ←上向きの三角形 */
+  border-bottom: 24px solid #fff; /* ←上向きの三角形 */
 }
 
 /* 吹き出しの枠線用の三角形（重ねて枠線効果） */
 .speech-tail::before {
   content: "";
   position: absolute;
-  left: -4px;
-  top: -12px;
+  top: 4px; /* ←-12pxから4pxに変更 */
+  left: -12px; /* ←-4pxから-12pxに変更 */
   width: 0;
   height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-right: 24px solid #333;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 24px solid #333;
 }
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .enemy-container {
-    height: 20vh; /* ←タブレットで少し小さく */
+    padding: 15px;
   }
 
   .enemy-image {
-    width: 20vw;
-    height: 20vh;
-    max-width: 200px;
-    max-height: 200px;
-    min-width: 100px;
-    min-height: 100px;
+    width: 25vh;
+    height: 25vh;
+    max-width: 250px;
+    max-height: 250px;
+    min-width: 120px;
+    min-height: 120px;
+    margin-bottom: 15px;
   }
 
   .speech-bubble {
-    max-width: 260px;
-    min-width: 180px;
-    padding: 20px 26px;
-    margin-left: 20px;
-    border-radius: 20px;
-    border: 3px solid #333;
+    max-width: 300px;
+    min-width: 200px;
+    padding: 22px 28px;
+    margin-left: 0;
   }
 
   .speech-text {
-    font-size: 16px;
-    line-height: 1.5;
-    font-weight: 500;
+    font-size: 18px;
   }
 
   .speech-tail {
-    left: -18px;
-    bottom: 25px;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-right: 18px solid #fff;
+    top: -18px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 18px solid #fff;
   }
 
   .speech-tail::before {
-    left: -3px;
-    top: -10px;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-right: 18px solid #333;
+    top: 3px;
+    left: -10px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 18px solid #333;
   }
 }
 
 @media (max-width: 480px) {
   .enemy-container {
-    height: 18vh; /* ←スマホでさらに小さく */
+    padding: 10px;
   }
 
   .enemy-image {
-    width: 18vw;
-    height: 18vh;
-    max-width: 150px;
-    max-height: 150px;
-    min-width: 80px;
-    min-height: 80px;
+    width: 22vh;
+    height: 22vh;
+    max-width: 180px;
+    max-height: 180px;
+    min-width: 100px;
+    min-height: 100px;
+    margin-bottom: 10px;
   }
 
   .speech-bubble {
-    max-width: 200px;
-    min-width: 160px;
-    padding: 16px 20px;
-    margin-left: 16px;
-    border-radius: 16px;
-    border: 3px solid #333;
+    max-width: 240px;
+    min-width: 180px;
+    padding: 18px 22px;
+    margin-left: 0;
   }
 
   .speech-text {
-    font-size: 14px;
-    line-height: 1.4;
-    font-weight: 500;
+    font-size: 16px;
   }
 
   .speech-tail {
-    left: -15px;
-    bottom: 22px;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 15px solid #fff;
+    top: -15px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 15px solid #fff;
   }
 
   .speech-tail::before {
-    left: -3px;
-    top: -8px;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 15px solid #333;
+    top: 2px;
+    left: -8px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 15px solid #333;
   }
 }

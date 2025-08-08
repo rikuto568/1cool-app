@@ -7,6 +7,7 @@
 import React, { use } from "react"; // Reactをインポート
 import { useEffect, useState } from "react";
 import EnemyCharacter from "./enemyCharacter.jsx";
+import "./timerdisplay.css"; // CSSをインポート
 
 function TimerDisplay({ task, estimatedTime, setGameResult }) {
   const [timeLeft, setTimeLeft] = useState(

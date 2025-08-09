@@ -90,6 +90,18 @@
 .battle-button button:active {
   transform: translateY(-1px);
 }
+.error-message {
+  color: #d32f2f;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 10px 20px;
+  padding: 12px;
+  background-color: #ffebee;
+  border: 2px solid #f44336;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(244, 67, 54, 0.2);
+}
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {

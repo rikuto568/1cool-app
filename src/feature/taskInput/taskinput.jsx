@@ -1,12 +1,13 @@
 import React from "react"; // ←これを追加
 import "./taskinput.css";
-function TaskInput({ task, setTask, startMatching }) {
+function TaskInput({ task, setTask, startMatching, error }) {
   return (
     <div className="first-page">
       <div className="title">ToDOバトル</div>
       <div className="head-text">
         <p>タスクを入力してください</p>
       </div>
+      {error && <div className="error-message">⚠️ {error}</div>}
       <div className="input-box">
         <input
           value={task}

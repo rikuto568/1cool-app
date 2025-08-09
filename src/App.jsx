@@ -33,9 +33,7 @@ function App() {
     } catch (error) {
       console.error(error);
       setError(error.message);
-    } finally {
       setIsMatching(false);
-      setIsBattleStarted(true);
     }
   }
 
@@ -69,8 +67,8 @@ function App() {
           task={task}
           setTask={settask}
           startMatching={handleStartMatching}
+          error={error} // エラーをTaskInputに渡す
         />
-        {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
       </>
     );
     // 画面遷移の大まかな仕組みはsetState関数で状態を変える → 条件分岐が再評価される → 違う画面が表示されるって感じ

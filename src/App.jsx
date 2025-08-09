@@ -32,7 +32,7 @@ function App() {
       setEstimatedTime(minutes);
     } catch (error) {
       console.error(error);
-      setError("AIとの通信に失敗しました。もう一度試してください。");
+      setError(error.message);
     } finally {
       setIsMatching(false);
       setIsBattleStarted(true);

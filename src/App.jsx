@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MatchingScreen from "./feature/matchingScreen/matchingScreen";
 import TaskInput from "./feature/taskInput/taskinput";
 import TimerDisplay from "./feature/timerDisplay/timerdisplay";
@@ -60,6 +60,11 @@ function App() {
     try {
       const minutes = await askOpenAI(task);
       setEstimatedTime(minutes);
+
+      setTimeout(() => {
+        setIsMatching(false); // マッチング画面終了
+        setIsBattleStarted(true); // バトル画面開始
+      }, 3000); // 3秒後にバトル画面へ遷移
     } catch (error) {
       console.error(error);
       setError(error.message);

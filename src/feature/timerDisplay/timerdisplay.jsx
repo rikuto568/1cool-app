@@ -16,13 +16,23 @@ function TimerDisplay({ task, estimatedTime, setGameResult }) {
   // 全体の時間を定義（分母）
   const [totalTime] = useState(estimatedTime ? estimatedTime * 60 : 0);
   // バックグラウンドタイマーを導入するよ
+
   const [startTime] = useState(() => {
-    const start = Date.now();
-    // 今の時刻を数字で教えてくれる関数
-    localStorage.setItem("timerStart", start.toString());
-    localStorage.setItem("timerDuration", (estimatedTime * 60).toString());
-    localStorage.setItem("timerTask", task);
-    return start;
+    // まず既存の開始時間をチェック
+    const existingStart = localStorage.getItem("timerStart");
+
+    if (existingStart) {
+      // 既存の開始時間がある場合はそれを使用
+      console.log("🔄 既存のタイマーを継続");
+      return parseInt(existingStart);
+    } else {
+      const start = Date.now();
+      // 今の時刻を数字で教えてくれる関数
+      localStorage.setItem("timerStart", start.toString());
+      localStorage.setItem("timerDuration", (estimatedTime * 60).toString());
+      localStorage.setItem("timerTask", task);
+      return start;
+    }
   });
   // タイマー機能作るよ
   useEffect(() => {
@@ -37,7 +47,7 @@ function TimerDisplay({ task, estimatedTime, setGameResult }) {
     // 一秒ずつ減らしていく処理
 
     return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, [timeLeft, startTime, estimatedTime]);
   useEffect(() => {
     if (timeLeft <= 0) {
       localStorage.removeItem("timerStart");

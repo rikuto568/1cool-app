@@ -16,6 +16,33 @@ function App() {
   const [gameResult, setGameResult] = useState(null); // 'win' | 'lose' | を入れてそこで処理を変える
   // estimatedTimeはAIが計算したタスクの時間を保存するための状態
   //画面遷移のためのやつ
+  // バックグラウンドタイマーの復帰処理
+  useEffect(() => {
+    const timerStart = localStorage.getItem("timerStart");
+    const timerDuration = localStorage.getItem("timerDuration");
+    const timerTask = localStorage.getItem("timerTask");
+
+    if (timerStart && timerDuration && timerTask) {
+      const startTime = parseInt(timerStart);
+      const duration = parseInt(timerDuration);
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+
+      if (elapsed < duration) {
+        // まだ時間が残っている
+        settask(timerTask);
+        setEstimatedTime(Math.ceil(duration / 60));
+        setIsBattleStarted(true);
+        console.log(`⏰ バックグラウンドタイマー復帰`);
+      } else {
+        // 時間切れ
+        localStorage.removeItem("timerStart");
+        localStorage.removeItem("timerDuration");
+        localStorage.removeItem("timerTask");
+        // 現実時間の時間を利用することによって、バックグラウンドでも動くようにしている
+      }
+    }
+  }, []);
+
   function resetGame() {
     settask(""); // "洗濯物をたたむ" → ""
     setIsMatching(false);
@@ -23,6 +50,9 @@ function App() {
     setEstimatedTime(null);
     setError(null);
     setGameResult(null); // "win+lose" → null
+    localStorage.removeItem("timerStart");
+    localStorage.removeItem("timerDuration");
+    localStorage.removeItem("timerTask");
   }
 
   async function handleStartMatching() {

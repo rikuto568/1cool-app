@@ -76,6 +76,14 @@ function TimerDisplay({ task, estimatedTime, setGameResult }) {
     // 例えば、1:05のように表示するための関数
   };
 
+  const getTimerClass = (seconds) => {
+    if (seconds <= 60) {
+      // 1分以下で警告
+      return "timer-text warning";
+    }
+    return "timer-text";
+  };
+
   return (
     <div className="timer-display">
       <header className="timer-header">
@@ -85,7 +93,11 @@ function TimerDisplay({ task, estimatedTime, setGameResult }) {
 
       <main className="battle-area">
         <div className="timer-section">
-          <div className="timer-text">{formatTime(timeLeft)}</div>
+          <div className="digital-timer">
+            <div className={getTimerClass(timeLeft)}>
+              {formatTime(timeLeft)}
+            </div>
+          </div>
         </div>
         <EnemyCharacter timeLeft={timeLeft} totalTime={totalTime} />
       </main>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HelpModal from "../help/HelpModal";
+import HelpModal from "../helpModal/HelpModal.jsx"; // HelpModalをインポート
 import "./taskinput.css";
 
 function TaskInput({ task, setTask, startMatching, error }) {

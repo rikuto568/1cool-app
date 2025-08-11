@@ -1,54 +1,42 @@
-# React + TypeScript + Vite
+アプリ概要
+ToDO バトルは、やりたいタスクを入力すると AI が作業時間を自動で見積もり、タイマーとともに「バトル感覚」でタスクに挑戦できるシンプルな生産性向上アプリです。
+タブを切り替えてもタイマーは正確に進みます。
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+使い方
+タスクを入力
+　例：「洗濯物をたたむ」「メールの返信」など
 
-Currently, two official plugins are available:
+バトル開始ボタンを押す
+　 AI がタスクにかかる時間を自動で見積もります
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+タイマーがスタート
+　時間内にタスクを終わらせましょう！
 
-## Expanding the ESLint configuration
+タスク完了ボタンを押す
+　時間内なら勝利、時間切れなら敗北です
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+特徴
+AI による自動時間見積もり
+バックグラウンドでも正確なタイマー
+シンプルな画面遷移と操作性
+利用規約・使い方説明のモーダル表示
+勝利・敗北画面あり
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+注意事項
+入力したタスク内容は外部 AI サービスに送信されます
+個人情報や機密情報の入力はお控えください
+本アプリの利用は自己責任でお願いします
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🛠️ 開発・カスタマイズ
+React（関数コンポーネント＋フック）で実装
+状態管理は useState/useEffect
+タイマー状態は localStorage で永続化
+画面遷移は状態変数による条件分岐
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+ライセンス・利用規約
+本アプリは個人利用目的で提供されています
+予告なく仕様変更やサービス停止する場合があります
+詳細はアプリ内「利用規約」をご確認ください
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+作者より一言
+楽しくタスク消化しましょう！

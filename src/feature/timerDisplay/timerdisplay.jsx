@@ -4,15 +4,25 @@
 // それを使って計算するみたいな感じで
 
 //レンダリングの後にuseeffectが実行される
-import React, { use } from "react"; // Reactをインポート
+import React from "react"; // Reactをインポート
 import { useEffect, useState } from "react";
 import EnemyCharacter from "./enemyCharacter.jsx";
 import "./timerdisplay.css"; // CSSをインポート
 
 function TimerDisplay({ task, estimatedTime, setGameResult }) {
-  const [timeLeft, setTimeLeft] = useState(
-    estimatedTime ? estimatedTime * 60 : 0
-  );
+  const [timeLeft, setTimeLeft] = useState(() => {
+    const existingStart = localStorage.getItem("timerStart");
+    const existingDuration = localStorage.getItem("timerDuration");
+    if (existingStart && existingDuration) {
+      // 既存のタイマーがあれば、残り時間を計算して初期値にする
+      const startTime = parseInt(existingStart);
+      const duration = parseInt(existingDuration);
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      return Math.max(0, duration - elapsed);
+    }
+    // なければ従来通り
+    return estimatedTime ? estimatedTime * 60 : 0;
+  });
   // 全体の時間を定義（分母）
   const [totalTime] = useState(estimatedTime ? estimatedTime * 60 : 0);
   // バックグラウンドタイマーを導入するよ

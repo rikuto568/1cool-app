@@ -1,8 +1,5 @@
 // 今後やること
-//
-//
 //一瞬だけ、見積もられた時間を表示するのをやめる
-//
 import React from "react";
 import "./WinScreen.css";
 

@@ -28,7 +28,7 @@ function TaskInput({ task, setTask, startMatching, error }) {
           onChange={(e) => setTask(e.target.value)}
           type="text"
           className="input-text"
-          placeholder="洗濯物をたたむ"
+          placeholder="例：洗濯物をたたむ"
         />
       </div>
       <div className="battle-button">

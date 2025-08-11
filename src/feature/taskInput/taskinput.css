@@ -172,67 +172,81 @@
 @media (max-width: 700px) {
   .first-page {
     max-width: 98vw;
-    padding: 18px 4vw;
+    padding: 14px 2vw;
     min-height: 80vh;
     border-radius: 10px;
   }
   .title {
-    font-size: 1.5rem;
+    font-size: 2.2rem; /* タイトルを大きく */
+    margin-bottom: 18px;
+    font-weight: bold;
   }
   .input-text {
-    font-size: 1rem;
-    padding: 10px 10px;
+    font-size: 1.2rem; /* 入力欄も少し大きく */
+    padding: 12px 12px;
   }
   .battle-button button {
-    font-size: 1rem;
-    padding: 10px 18px;
+    font-size: 1.5rem; /* ボタンを大きく */
+    padding: 16px 32px;
+    border-radius: 10px;
   }
   .help-buttons {
-    gap: 12px;
-    margin-top: 12px;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .help-button {
+    font-size: 1.15rem; /* ヘルプボタンも大きめに */
+    padding: 12px 0;
+  }
+  .head-text {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .error-message {
+    font-size: 1rem;
+    padding: 7px 7px;
   }
 }
 
 @media (max-width: 480px) {
   .first-page {
     max-width: 100vw;
-    padding: 10px 2vw;
+    padding: 8px 1vw;
     border-radius: 0;
     min-height: 100vh;
     box-shadow: none;
   }
   .title {
+    font-size: 1.7rem; /* スマホでもタイトル大きめ */
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+  .input-text {
     font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-  .head-text {
-    font-size: 0.95rem;
-    margin-bottom: 8px;
-  }
-  .input-box {
-    margin-bottom: 10px;
-  }
-  .battle-button {
-    margin-bottom: 10px;
+    padding: 10px 10px;
   }
   .battle-button button {
-    font-size: 0.95rem;
-    padding: 8px 8px;
-    border-radius: 5px;
+    font-size: 1.2rem; /* ボタンも大きめ */
+    padding: 13px 0;
+    border-radius: 8px;
   }
   .help-buttons {
     flex-direction: column;
     align-items: center;
-    gap: 6px;
-    margin-top: 8px;
+    gap: 10px;
+    margin-top: 10px;
   }
   .help-button {
     width: 100%;
-    font-size: 0.95rem;
-    padding: 8px 0;
+    font-size: 1.05rem;
+    padding: 10px 0;
+  }
+  .head-text {
+    font-size: 1rem;
+    margin-bottom: 8px;
   }
   .error-message {
-    font-size: 0.9rem;
-    padding: 5px 5px;
+    font-size: 0.97rem;
+    padding: 6px 6px;
   }
 }

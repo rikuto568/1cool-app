@@ -6,8 +6,8 @@ function EnemyCharacter({ timeLeft, totalTime }) {
     "しっかりやれよー。。。",
     "おい、もっとペースを上げたらどうだ",
     "何をだらだらやってんだ。時間ないぞ！",
-    "バカめ、もう手遅れだ！あきらめろ",
-    "ざまあみろ！もうすぐ時間切れだ！お前の負け～！！",
+    "本気でやれ！ふざけるな、全力出せ！！",
+    "ふざけるな！絶対に終わらせろ！",
   ];
 
   // 進行度の計算部分
@@ -24,7 +24,7 @@ function EnemyCharacter({ timeLeft, totalTime }) {
   let animationClass = "enemy-calm";
   if (progress >= 0.8) {
     animationClass = "enemy-angry";
-  } else if (progress >= 0.6) {
+  } else if (progress >= 0.5) {
     animationClass = "enemy-worried";
   }
 

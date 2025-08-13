@@ -17,7 +17,7 @@ function TaskInput({ task, setTask, startMatching, error }) {
 
   return (
     <div className="first-page">
-      <div className="title">ToDOバトル</div>
+      <div className="title">TODOバトル</div>
       <div className="head-text">
         <p>タスクを入力してください</p>
       </div>

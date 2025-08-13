@@ -89,7 +89,7 @@ function TimerDisplay({ task, estimatedTime, setGameResult }) {
 
   const getTimerClass = (seconds) => {
     if (seconds <= 60) {
-      // 1分以下で警告
+      // 1分以下で警告するよ
       return "timer-text warning";
     }
     return "timer-text";

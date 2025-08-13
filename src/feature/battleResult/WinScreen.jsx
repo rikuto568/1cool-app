@@ -20,7 +20,9 @@ function WinScreen({ task, estimatedTime, resetGame, actualTime }) {
         <div className="win-details">
           <p className="task-completed">あなたは「{task}」を完了しました</p>
           <p className="time-info">推定所要時間: {estimatedTime}分</p>
-          <p>実際にかかった時間：{formatActualTime(actualTime)}</p>
+          <p className="time-info">
+            実際にかかった時間：{formatActualTime(actualTime)}
+          </p>
           <p className="congratulations">お疲れ様でした！</p>
         </div>
         <button className="home-button" onClick={resetGame}>

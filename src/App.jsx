@@ -73,12 +73,14 @@ function App() {
   }
 
   let content;
-  if (gameResult === "win") {
+  if (gameResult && gameResult.result === "win") {
+    // ゲームリザルトかつ、勝利だったら勝利画面を表示するっていう処理
     content = (
       <WinScreen
         task={task}
         estimatedTime={estimatedTime}
         resetGame={resetGame}
+        actualTime={gameResult.actualTime}
       />
     );
   } else if (gameResult === "lose") {

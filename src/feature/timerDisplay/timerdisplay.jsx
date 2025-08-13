@@ -70,10 +70,11 @@ function TimerDisplay({ task, estimatedTime, setGameResult }) {
   // 時間がゼロになったときに負け画面に行くための処理を書いてます。
 
   const handleComplete = () => {
-    localStorage.removeItem("timerStart");
-    localStorage.removeItem("timerDuration");
-    localStorage.removeItem("timerTask");
-    setGameResult("win");
+    const start = localStorage.getItem("timerStart") || startTime;
+    // タイマーが始まった時刻を取得
+    const elapsed = Math.floor((Date.now() - start) / 1000);
+    // 今の時間からタイマー開始時刻を引いて経過した秒数を計算
+    setGameResult({ result: "win", actualTime: elapsed }); //
   };
 
   const formatTime = (seconds) => {

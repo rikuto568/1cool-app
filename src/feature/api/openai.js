@@ -1,7 +1,7 @@
-const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+// const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 
 export async function askOpenAI(taskDescription) {
-  const url = "https://api.openai.com/v1/chat/completions";
+  // const url = "https://api.openai.com/v1/chat/completions";
 
   const requestBody = {
     model: "gpt-4o-mini",
@@ -36,7 +36,7 @@ export async function askOpenAI(taskDescription) {
 - 時間がかかる（45-60分）：レポート作成、プレゼン準備、大掃除
 
 重要：タスクの複雑さと量に応じて、3分から60分の範囲で適切に見積もってください
-- 見積もり時間（estimatedMinutes）は必ず奇数または素数の数字にしてください。例えば5, 7, 11, 13, 17, 23, 37, 41, 59など。偶数や合成数（4, 6, 8, 10, 12など）は避けてください。`,
+`,
       },
       {
         role: "user",
@@ -47,11 +47,11 @@ export async function askOpenAI(taskDescription) {
   };
 
   try {
-    const response = await fetch(url, {
+    const response = await fetch("/api/openai", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
+        // Authorization: `Bearer ${API_KEY}`,
       },
       body: JSON.stringify(requestBody),
     });

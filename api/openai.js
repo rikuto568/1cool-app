@@ -1,4 +1,10 @@
 export default async function handler(req, res) {
+  // デバッグ用ログ
+  console.log("=== API Debug ===");
+  console.log("Method:", req.method);
+  console.log("API Key exists:", !!process.env.OPENAI_API_KEY);
+  console.log("Body:", JSON.stringify(req.body, null, 2));
+
   // ブラウザからのアクセスを許可する設定
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
